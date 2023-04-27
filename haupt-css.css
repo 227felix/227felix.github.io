@@ -151,6 +151,12 @@ main {
   .logo {
     display: none;
   }
+
+  .nav-item:last-child {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+  }
 }
 
 /* Large screens */
