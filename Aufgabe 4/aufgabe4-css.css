@@ -1,0 +1,159 @@
+html {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+
+
+}
+
+:root {
+  --bgcolor: rgb(236, 236, 236);
+
+}
+
+html * {
+  font-size: calc(1.5*(1vh + 0.2vw));
+  font-family: 'Merriweather', serif;
+
+  /*
+  background-color: var(--bgcolor);
+  */
+
+
+}
+
+h1 {
+  font-size: calc(3*(1vh + 0.2vw));
+}
+
+#section {
+  display: flex;
+  flex-direction: column;
+
+
+
+  font-size: 2vh;
+}
+
+#section-in-section {
+  display: flex;
+  flex-direction: row;
+
+}
+
+
+.label {
+  margin-bottom: 0px;
+  margin-top: 0px;
+
+}
+
+.input1 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+
+  border-style: solid;
+  border-color: #a1a1a1;
+  border-radius: 6px;
+
+  max-width: 200px;
+  min-width: 150px;
+  width: calc(10vh + 5vw);
+  
+}
+
+
+#btn4 {
+  margin-right: 5px;
+}
+
+#btn5 {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#btn6 {
+  margin-left: 5px;
+}
+
+#btn2 {}
+
+.btn1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: fit-content;
+  white-space: nowrap;
+
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(190, 190, 190);
+  border-radius: 6px;
+}
+
+.btn2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+  width: 200px;
+  white-space: nowrap;
+
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(190, 190, 190);
+  border-radius: 6px;
+}
+
+#tabelle1 {
+  margin-top: 10px;
+
+  border-collapse: collapse;
+
+  width: 100%;
+  max-width: 200vh;
+
+
+}
+
+#tabelle1 th {
+  height: 4vh;
+  background-color: rgb(223, 223, 223);
+  padding-left: 20px;
+  padding-right: 20px;
+  
+
+
+
+}
+
+#tabelle1 td {
+  height: 4vh;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(204, 204, 204);
+}
+
+#loading-bar {
+  border-color: rgb(0, 83, 0);
+  border-radius: 2.5px;
+  border-style: solid;
+  background-color: green;
+  opacity: 0.7;
+
+  border-width: 1px;
+  height: 5px;
+
+  margin: auto;
+
+  width: 0px;
+
+  position: relative;
+}
+
+#loading-bar-cont {
+
+}
