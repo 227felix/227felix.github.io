@@ -1,0 +1,188 @@
+:root {
+  --outline-blue: blue;
+  --outline-red: red;
+
+  --background-prim: #fffdf0;
+  --navbar-prim: #606c38;
+  --navbar-sec: #7d8857;
+
+  --font-prim: #283618;
+  --font-sec: #121a09;
+  --font-tri: #bc6c25;
+}
+
+body {
+  font-family: 'EB Garamond', serif;
+  font-size: 40px;
+
+  color: var(--font-prim);
+  background-color: var(--background-prim);
+
+}
+
+.outline {
+  outline: var(--outline-red) dashed 1px;
+}
+
+.outline-blue {
+  outline: var(--outline-blue) dashed 1px;
+}
+
+.outline-green {
+  outline: #00ff15 dashed 1px;
+}
+
+.outline-pink {
+  outline: #ff00b3 dashed 1px;
+}
+
+.navbar {
+  background-color: var(--navbar-prim);
+  height: 4rem;
+  width: 100vw;
+  position: fixed;
+  margin: 0;
+  top: 0;
+  left: 0;
+
+  border: 0px;
+  border-bottom: 2px;
+  border-color: var(--font-prim);
+  border-style: solid;
+
+  color: var(--font-sec);
+
+}
+
+.navbar-list {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding-left: 0px;
+
+}
+
+.navbar-item {
+
+  height: 100%;
+
+  width: 28vw;
+
+  margin: auto;
+
+  text-align: center;
+
+  position: relative;
+
+  transition: background-color .125s;
+
+}
+
+.navbar-item:hover {
+  background-color: var(--navbar-sec);
+
+
+}
+
+.navbar-item:first-child {
+
+  width: 16vw;
+
+
+}
+
+.navbar-text {
+  margin: 0;
+  padding: 0;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.headline {
+  text-align: center;
+  font-size: 30px;
+
+  margin-top: 5rem;
+
+  color: var(--font-tri);
+
+
+}
+
+h1 {
+  margin: 0px;
+}
+
+.main-content {
+  margin: 0;
+  padding: 10px;
+  margin-left: 12rem;
+  margin-right: 12rem;
+}
+
+.notes-body {
+  margin-top: 50px;
+  
+  width: 50rem;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+.notes-cell {
+  height: 2rem;
+  width: 100%;
+
+
+
+  margin-top: 1rem;
+
+  font-size: 1.5rem;
+
+  display: flex;
+
+  outline: #b4b4b4 dashed 1px;
+
+
+  
+}
+
+.notes-text {
+  margin-right: auto;
+}
+
+.notes-check {
+  width: 2rem;
+  height: 2rem;
+}
+
+.notes-rest {
+  flex-grow: 1;
+}
+
+#notes-rest {
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-top: 10px;
+
+  width: 20vw;
+  height: 3rem;
+
+  text-align: center;
+
+  background-color: #7d8857;
+
+  border: #454b2f 2px solid;
+}
