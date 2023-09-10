@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+
+        <link href="stylescurrent.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Car Quiz</title>
+
+        <script>
+          window.addEventListener('load', function() {
+                let counter = localStorage.getItem("numberofcarimg");
+                let i = 0;
+                let j = 0;
+                while (i < counter)
+                {
+                  while (localStorage.getItem(j.toString()) == null)
+                  {
+                    j += 1;
+                  }
+                  let temp = JSON.parse(localStorage.getItem(j.toString()));
+
+                  document.getElementById("indexcardiv").innerHTML += '<div class="remover" id="' + 'div' + i.toString() + '"></div>'
+                  document.getElementById("div" + i.toString()).innerHTML += '<h2>' + temp.brand + " " + temp.model + '</h2>';
+                  document.getElementById("div" + i.toString()).innerHTML += '<img src="' + temp.url + '"><br>';
+                  document.getElementById("div" + i.toString()).innerHTML += '<img src="https://static.vecteezy.com/system/resources/previews/016/314/454/non_2x/red-cross-mark-free-png.png" class="redcross" onclick="removeDiv(this, ' + i + ')">';
+                  i += 1;
+                  j += 1;
+                  //add functionallity to red Cross currently buggy
+                }
+            });
+
+            function removeDiv(cross, num) {
+              cross.parentElement.remove();
+              localStorage.removeItem(num.toString());
+              if (parseInt(localStorage.getItem("numberofcarimg")) > 0)
+              {
+                localStorage.setItem("numberofcarimg", (parseInt(localStorage.getItem("numberofcarimg")) - 1).toString());
+              }
+
+
+            }
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html">Home</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="add.html">Add</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="current.html">Questions</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <main>
+            <h1>Current Questions</h1>
+
+            <div id="indexcardiv">
+
+            </div>
+          </main>
+    </body>
+</html>

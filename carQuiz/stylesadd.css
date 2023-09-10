@@ -1,0 +1,11 @@
+#carcontainer img {
+    height: 150px;
+    width: auto;
+}
+#form1 * {
+    width: 300px;
+}
+
+.addform {
+    margin-bottom: 10px;
+}

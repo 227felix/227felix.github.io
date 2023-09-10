@@ -1,0 +1,20 @@
+.indexform {
+    margin-bottom: 10px;
+}
+
+#placeh img {
+    height: 400px;
+    margin-bottom: 15px;
+}
+
+#placehanswers img {
+    height: 100px;
+}
+
+#correctSign {
+    color: green;
+}
+
+#incorrectSign {
+    color: red;
+}
