@@ -2,6 +2,28 @@
     max-width: 300px;
     height: auto;
 }
-.redcross {
+
+#indexcardiv h2 {
+    margin-top: 10px;
+}
+
+.removeButton {
     width: 30px;
+    height: 30px;
+    margin-top: 5px;
+
+    border-radius: 7px;
+    border: 0px;
+
+    background-color: #dc3545;
+    color: white;
+}
+
+.removeButton:hover {
+    background-color: white;
+    color: #ba3636;
+
+    border: 1px solid #dc3545;
+
+
 }

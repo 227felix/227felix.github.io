@@ -13,41 +13,106 @@
 
         <link href="stylescurrent.css" rel="stylesheet">
         <link href="styles.css" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="https://www.iconpacks.net/icons/2/free-car-icon-2901-thumb.png">
+
+        
         <title>Car Quiz</title>
 
         <script>
+          function removeDivAndUpdateCounter(cross, num) {
+            cross.parentElement.remove();
+            localStorage.removeItem(num.toString());
+            if (parseInt(localStorage.getItem("numberofcarimg")) > 0)
+            {
+              localStorage.setItem("numberofcarimg", (parseInt(localStorage.getItem("numberofcarimg")) - 1).toString());
+            }
+
+            //remove the text
+            while (document.getElementById('currentcounterdiv').firstChild)
+            {
+              document.getElementById('currentcounterdiv').removeChild(document.getElementById('currentcounterdiv').lastChild);
+            }
+
+            //add the new, updated count
+            document.getElementById('currentcounterdiv').innerHTML += '<p>Number of Cars: ' + localStorage.getItem("numberofcarimg") + '</p>';
+
+
+          }
+
+
+          function removeAll() {
+
+            //remove displayed cars
+            while (document.getElementById('indexcardiv').firstChild)
+            {
+              document.getElementById('indexcardiv').removeChild(document.getElementById('indexcardiv').lastChild);
+            }
+
+            //remove cars from localstorage
+            let counter = parseInt(localStorage.getItem('numberofcarimg'));
+            let j = 0;
+            if (counter != null)
+            {
+              while (counter > 0)
+              {
+                if (localStorage.getItem(j.toString()) != null)
+                {
+                  localStorage.removeItem(j.toString());
+                  counter -= 1;
+                }
+                j += 1;
+              }
+              localStorage.setItem('numberofcarimg', "0");
+            }
+
+            //remove the text
+            while (document.getElementById('currentcounterdiv').firstChild)
+            {
+              document.getElementById('currentcounterdiv').removeChild(document.getElementById('currentcounterdiv').lastChild);
+            }
+
+            //add the new, updated count
+            document.getElementById('currentcounterdiv').innerHTML += '<p>Number of Cars: 0</p>';
+          }
+
+
           window.addEventListener('load', function() {
                 let counter = localStorage.getItem("numberofcarimg");
-                let i = 0;
-                let j = 0;
-                while (i < counter)
+
+
+                if (counter == null)
                 {
-                  while (localStorage.getItem(j.toString()) == null)
+                  document.getElementById('currentcounterdiv').innerHTML += '<p>Number of Cars: 0</p>';
+                }
+                else {
+                  document.getElementById('currentcounterdiv').innerHTML += '<p>Number of Cars: ' + counter + '</p>';
+                }
+
+                if (counter != null)
+                {
+                  let i = 0;
+                  let j = 0;
+                  while (i < counter)
                   {
+                    //infinite Loop smh
+                    while (localStorage.getItem(j.toString()) == null)
+                    {
+                      j += 1;
+                    }
+                    let temp = JSON.parse(localStorage.getItem(j.toString()));
+
+                    document.getElementById("indexcardiv").innerHTML += '<div class="remover" id="' + 'div' + i.toString() + '"></div>'
+                    document.getElementById("div" + i.toString()).innerHTML += '<h2>' + temp.brand + " " + temp.model + '</h2>';
+                    document.getElementById("div" + i.toString()).innerHTML += '<img src="' + temp.url + '"><br>';
+                    document.getElementById("div" + i.toString()).innerHTML += '<button class="removeButton" onclick="removeDivAndUpdateCounter(this, ' + i + ')">X</button>';
+                    i += 1;
                     j += 1;
                   }
-                  let temp = JSON.parse(localStorage.getItem(j.toString()));
-
-                  document.getElementById("indexcardiv").innerHTML += '<div class="remover" id="' + 'div' + i.toString() + '"></div>'
-                  document.getElementById("div" + i.toString()).innerHTML += '<h2>' + temp.brand + " " + temp.model + '</h2>';
-                  document.getElementById("div" + i.toString()).innerHTML += '<img src="' + temp.url + '"><br>';
-                  document.getElementById("div" + i.toString()).innerHTML += '<img src="https://static.vecteezy.com/system/resources/previews/016/314/454/non_2x/red-cross-mark-free-png.png" class="redcross" onclick="removeDiv(this, ' + i + ')">';
-                  i += 1;
-                  j += 1;
-                  //add functionallity to red Cross currently buggy
                 }
             });
 
-            function removeDiv(cross, num) {
-              cross.parentElement.remove();
-              localStorage.removeItem(num.toString());
-              if (parseInt(localStorage.getItem("numberofcarimg")) > 0)
-              {
-                localStorage.setItem("numberofcarimg", (parseInt(localStorage.getItem("numberofcarimg")) - 1).toString());
-              }
-
-
-            }
         </script>
     </head>
     <body>
@@ -71,6 +136,10 @@
           </nav>
           <main>
             <h1>Current Questions</h1>
+            <div id="currentcounterdiv">
+
+            </div>
+            <button class="btn btn-outline-danger" onclick="removeAll()">Remove All</button>
 
             <div id="indexcardiv">
 
