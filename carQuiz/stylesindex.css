@@ -18,3 +18,12 @@
 #incorrectSign {
     color: red;
 }
+
+.nav-link {
+    display: flex;
+    align-items: center;
+}
+
+#input1 {
+    width: 200px;
+}

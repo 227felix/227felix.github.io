@@ -98,7 +98,7 @@
             }
 
             //updates the correct/incorrect Sign
-            function setCorrectSign() {
+            function setCorrectSign(correct) {
                 let placeholderAnswers = document.getElementById('placehanswers');
                 while (placeholderAnswers.firstChild)
                 {
@@ -109,7 +109,7 @@
                 let userInputModel = document.getElementById('modelinp').value
                 placeholderAnswers.innerHTML += '<p id="scoreSign">Score: ' + score + ' / ' + takenQuestions.toString() + '</p>'; //add: Score: i / j
 
-                if (userInputBrand === displayedCar.brand && userInputModel === displayedCar.model)
+                if (correct)
                 {
                     placeholderAnswers.innerHTML += '<p id="correctSign">Correct!</p>';
                 }
@@ -140,11 +140,11 @@
                 displayedCar = selectedCar;
                 if (selectedCar !== undefined)
                 {
-                    d.innerHTML += '<img src="' + selectedCar.url +'">';
+                    d.innerHTML += '<img src="' + selectedCar.url +'" class="rounded-4">';
                 }
                 else
                 {
-                    d.innerHTML += '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png">';
+                    d.innerHTML += '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png" class="rounded-4">';
                 }
 
             };
@@ -164,30 +164,68 @@
             // counts the users score
             let score = 0;
 
+            // stores the brand setting
+            let brandDisabled = false;
+
+
             window.addEventListener('load', function() {
-                addPreparedCarList();
+                //addPreparedCarList();
+
+                //check for settings
+                if (localStorage.getItem('check1') == "true") {
+                    brandDisabled = true;
+                    document.getElementById('brandinp').disabled = true;
+                }
+
+                //set focus
+                document.getElementById('submitbutton').focus();
+
+
                 //add Eventlistener to Submitbutton
                 document.getElementById('input1').addEventListener("submit", (e) => {
                     e.preventDefault();
+
+                    document.getElementById('submitbutton').value = "Check";
 
 
                     if (displayedCar !== undefined)
                     {
                         let userInputBrand = document.getElementById('brandinp').value
                         let userInputModel = document.getElementById('modelinp').value
-                        if (userInputBrand === displayedCar.brand && userInputModel === displayedCar.model)
+                        if (brandDisabled)
                         {
-                            score += 1;
+                            if (userInputModel === displayedCar.model)
+                            {
+                                score += 1;
+                                setCorrectSign(true);
+                            }
+                            else {
+                                setCorrectSign(false);
+                            }
                         }
-                        setCorrectSign();
-
+                        else {
+                            if (userInputBrand === displayedCar.brand && userInputModel === displayedCar.model)
+                            {
+                                score += 1;
+                                setCorrectSign(true);
+                            }
+                            else {
+                                setCorrectSign(false);
+                            }
+                        }
                         setCorrectAnswer();
                     }
                     setNewImage();
 
                     document.getElementById('brandinp').value='';
                     document.getElementById('modelinp').value='';
-                    document.getElementById('brandinp').focus();
+                    if (brandDisabled)
+                    {
+                        document.getElementById('modelinp').focus();
+                    }
+                    else {
+                        document.getElementById('brandinp').focus();
+                    }
 
 
                 });
@@ -210,6 +248,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="current.html">Questions</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="settings.html"><img src="settings-svgrepo-com.svg" width="20" height="20"></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -217,18 +258,18 @@
         <main>
             <h1>Guess the Car</h1>
             <div id="placeh">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png" class="rounded-4">
             </div>
             <form id="input1">
                 <label for="brandinp">Brand</label>
                 <br>
-                <input type="text" class="indexform" id="brandinp" autocomplete="off">
+                <input class="form-control" type="text" class="indexform" id="brandinp" autocomplete="off">
                 <br>
                 <label for="modelinp">Model</label>
                 <br>
-                <input type="text" class="indexform" id="modelinp" autocomplete="off">
+                <input class="form-control" type="text" class="indexform" id="modelinp" autocomplete="off">
                 <br>
-                <input type="submit" value="Answer">
+                <input class="btn btn-secondary" type="submit" id="submitbutton" value="Start">
 
             </form>
             <div id="placehanswers">

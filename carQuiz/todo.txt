@@ -1,0 +1,4 @@
+show how many cars are in the quiz
+
+button to clear all cars from the quiz
+

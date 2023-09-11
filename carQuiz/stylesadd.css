@@ -9,3 +9,8 @@
 .addform {
     margin-bottom: 10px;
 }
+
+#addPreparedButton {
+    width: 300px;
+    margin-top: 10px;
+}

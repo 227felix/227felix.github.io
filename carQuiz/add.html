@@ -18,6 +18,70 @@
         <title>Car Quiz</title>
 
         <script>
+            function addPreparedCarList() {
+                let entry = {
+                    url: "https://www.autozeitung.de/assets/styles/article_image/public/field/images/01-koenigsegg-gemera-2023-vorstellung.jpg?itok=PuZVPNOD",
+                    brand: "Koenigsegg",
+                    model: "Gemera"
+                };
+                addEntry(entry);
+                entry = {
+                    url: "https://files.porsche.com/filestore/image/multimedia/none/992-gt3-modelimage-sideshot/model/765dfc51-51bc-11eb-80d1-005056bbdc38/porsche-model.png",
+                    brand: "Porsche",
+                    model: "911 GT3"
+                };
+                addEntry(entry);
+                entry = {
+                    url: "https://www.mercedes-benz.de/content/dam/hq/passengercars/cars/g-class/w463-pi/amg/stage/08-2022/images/mercedes-amg-g-class-w463-stage-3840x1707-08-2022.jpg",
+                    brand: "Mercedes",
+                    model: "G-Klasse"
+                };
+                addEntry(entry);
+                entry = {
+                    url: "https://i.auto-bild.de/ir_img/3/2/0/9/4/4/5/Opel_Corsa_RRA13-cdbb909db2d45a1d.jpg",
+                    brand: "Opel",
+                    model: "Corsa"
+                };
+                addEntry(entry);
+                entry = {
+                    url: "https://image.stern.de/32728788/t/5_/v3/w1440/r1.7778/-/pagani-utopia-frontansicht.jpg",
+                    brand: "Pagani",
+                    model: "Utopia"
+                };
+                addEntry(entry);
+                entry = {
+                    url: "https://www.tz.de/bilder/2018/08/27/10174357/913373203-bugatti-divo-soll-seinem-16-zylinder-motor-kmh-schnell-werden-21fiC9HdElfe.jpg",
+                    brand: "Bugatti",
+                    model: "Divo"
+                };
+                addEntry(entry);
+                entry = {
+                    url: "https://www.ford-koegler.de/_next/image/?url=https%3A%2F%2Fapi.ford-koegler.de%2Ffileadmin%2Fuser_upload%2Fneuer_Ford_F-150.jpg&w=1920&q=95",
+                    brand: "Ford",
+                    model: "F-150"
+                };
+                addEntry(entry);
+            }
+
+
+            function addEntry(entry) {
+                if (localStorage.getItem("numberofcarimg") !== null) {
+                    let j = 0;
+                    while (localStorage.getItem(j.toString()) !== null) {
+                        j += 1;
+                    }
+                    localStorage.setItem(j.toString(), JSON.stringify(entry));
+                    localStorage.setItem("numberofcarimg", (parseInt(localStorage.getItem("numberofcarimg")) + 1).toString());
+
+                    document.getElementById("carcontainer").innerHTML += '<h2>' + entry.brand + " " + entry.model + '</h2>';
+                    document.getElementById("carcontainer").innerHTML += '<img src="' + entry.url + '">';
+
+                } else {
+                    localStorage.setItem("0", JSON.stringify(entry));
+                    localStorage.setItem("numberofcarimg", "1");
+                }
+            }
+
             // TODO: Add code to check answers to questions
             window.addEventListener('load', function() {
                 document.getElementById('form1').addEventListener("submit", (e) => {
@@ -27,24 +91,13 @@
                         brand: document.getElementById('brandinp').value,
                         model: document.getElementById('modelinp').value
                     };
-                    if (localStorage.getItem("numberofcarimg") !== null) {
-                        let j = 0;
-                        while (localStorage.getItem(j.toString()) !== null)
-                        {
-                            j += 1;
-                        }
-                        localStorage.setItem(j.toString(), JSON.stringify(entry));
-                        localStorage.setItem("numberofcarimg", (parseInt(localStorage.getItem("numberofcarimg")) + 1).toString());
-
-                        document.getElementById("carcontainer").innerHTML += '<h2>' + entry.brand + " " + entry.model + '</h2>';
-                        document.getElementById("carcontainer").innerHTML += '<img src="' + entry.url + '">';
-
-                    } else {
-                        localStorage.setItem("0", JSON.stringify(entry));
-                        localStorage.setItem("numberofcarimg", "1");
-                    }
-
+                    addEntry(entry);
                 });
+
+                document.getElementById('addPreparedButton').addEventListener("click", function() {
+                    addPreparedCarList();
+                });
+
             });
         </script>
     </head>
@@ -62,7 +115,7 @@
                             <a class="nav-link active" aria-current="page" href="add.html">Add</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="current.html">Questions</a>
+                            <a class="nav-link active" aria-current="page" href="current.html">Questions</a>
                         </li>
                     </ul>
                 </div>
@@ -76,18 +129,19 @@
             <form id="form1">
                 <label for="inp1">URL</label>
                 <br>
-                <input type="text" class="addform" id="urlinp" autofocus placeholder="www.cool-car.de" required>
+                <input class="form-control" type="text" class="addform" id="urlinp" autofocus placeholder="www.cool-car.de" required>
                 <br>
                 <label for="inp2">Brand</label>
                 <br>
-                <input type="text" class="addform" id="brandinp" placeholder="VW" required>
+                <input class="form-control" type="text" class="addform" id="brandinp" placeholder="VW" required>
                 <br>
                 <label for="inp3">Model</label>
                 <br>
-                <input type="text" class="addform" id="modelinp" placeholder="Golf" required>
+                <input class="form-control" type="text" class="addform" id="modelinp" placeholder="Golf" required>
                 <br>
-                <input type="submit" value="Upload">
+                <input class="btn btn-secondary" type="submit" value="Upload">
             </form>
+            <button class="btn btn-outline-secondary" id="addPreparedButton">Add prepared cars</button>
             <div id="carcontainer">
 
             </div>
