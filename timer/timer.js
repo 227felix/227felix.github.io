@@ -31,7 +31,7 @@ window.addEventListener('load', function () {
 
 
 
-        span.textContent = years + " Years " + millis;
+        span.textContent = years + " Years " + seconds + " : " + t;
       }
 
 });
