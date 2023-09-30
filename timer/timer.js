@@ -35,7 +35,8 @@ window.addEventListener('load', function () {
       }
 
 });
-// + ":" + ("00" + (millis % 1000)).slice(-3);
+//     span.textContent = years + " Years " + Math.floor(millis / 1000) + ":" + ("00" + (millis % 1000)).slice(-3);
+
 
 
 
