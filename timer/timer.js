@@ -31,7 +31,7 @@ window.addEventListener('load', function () {
 
 
 
-        span.textContent = years + " Years " + Math.floor(millis / 1000) + ":" + ("00" + (millis % 1000)).slice(-3);
+        span.textContent = years + " Years " + (millis / (1000 * 60 * 60 * 24 * 365));
       }
 
 });
