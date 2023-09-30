@@ -31,11 +31,11 @@ window.addEventListener('load', function () {
 
 
 
-        span.textContent = years + " Years " + (millis / (1000 * 60 * 60 * 24 * 365));
+        span.textContent = years + " Years " + (millis / (1000 * 60 * 60 * 24 * 365)).slice(-16);
       }
 
 });
-
+// + ":" + ("00" + (millis % 1000)).slice(-3);
 
 
 
