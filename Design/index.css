@@ -1,6 +1,6 @@
 body {
     background-color: rgb(0, 5, 0);
-    background-image: url("/static/black_liquid_wallpaper.jpg");
+    background-image: url("static/black_liquid_wallpaper.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 
