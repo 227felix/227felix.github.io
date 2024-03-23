@@ -1,17 +1,30 @@
+:root {
+  font-family: "Inconsolata", monospace;
+}
+#first-content {
+  background-color: #f0f0f0;
+  margin: 10px;
+  margin-top: 20px;
+  padding: 20px;
+
+  height: 15vh;
+
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 .box1 {
-  background-color: red;
+  background-color: cadetblue;
 }
 .box2 {
-  background-color: green;
+  background-color: crimson;
 }
 .box3 {
-  background-color: blue;
+  background-color: darkgoldenrod;
 }
 
 .box {
-  min-width: 100px;
-  max-width: 300px;
-  width: 30%;
+  width: calc(100% / 3 - 20px);
 
   min-height: 100px;
   max-height: 300px;
