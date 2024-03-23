@@ -1,0 +1,30 @@
+.box1 {
+  background-color: red;
+}
+.box2 {
+  background-color: green;
+}
+.box3 {
+  background-color: blue;
+}
+
+.box {
+  min-width: 100px;
+  max-width: 300px;
+  width: 30%;
+
+  min-height: 100px;
+  max-height: 300px;
+  height: 30%;
+  height: 200px;
+  margin: 10px;
+
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
