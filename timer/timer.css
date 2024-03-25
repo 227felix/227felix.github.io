@@ -1,47 +1,102 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+
+  background-color: rgb(240, 240, 240);
+  color: rgb(26, 0, 56);
+
+  transition: 2s ease;
+}
+
+body.dark-mode {
+  /* Dark theme */
+  background-color: #1b1b1b;
+  color: #ececec;
+}
+
+body.dark-mode #start {
+  h1 {
+    color: #eeeeee;
+  }
+
+  #button {
+    background-color: #303030;
+    color: #eeeeee;
+  }
+
+  #age {
+    color: #eeeeee;
+    background-color: #303030;
+  }
+  background-color: #260029;
+
+  transition: 2s ease;
+}
+
+#darkmode-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  z-index: 1000;
+}
+
+#darkmode-button {
+  border-radius: 20%;
+}
+
+#darkmode-button svg {
+  opacity: 0.8;
+}
+
 #start {
-    background-color: rgb(255, 232, 251);
-    text-align: center;
-    border-radius: 15px;
-    color: rgb(26, 0, 56);
+  background-color: rgb(255, 232, 251);
+  text-align: center;
+  border-radius: 15px;
 
-    padding: 10px;
+  padding: 10px;
 
-    width: 80vw;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 80vw;
+  max-width: 1000px;
+
+  height: 230px;
+  margin: auto;
 }
 
 #start > * {
-    max-width: 150px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-    font-family: 'PT Sans', sans-serif;
-    
+  max-width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  font-family: "PT Sans", sans-serif;
+}
+
+h1 {
+  font-size: 80px;
+  font-family: "PT Sans", sans-serif;
 }
 
 #button {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
-body {
-    height: auto;
+#age {
+  text-align: center;
 }
 
-#age{
-    text-align: center; 
- }
-
- #span {
-    text-align: center;
-    display: flex; /* Use flexbox for vertical and horizontal centering */
-    flex-direction: column; /* Stack child elements vertically */
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    height: 80vh; /* Make the container the full height of the viewport */
-    font-size: 4em;
-    font-family: 'PT Sans', sans-serif;
-    color: rgb(54, 54, 54);
+#span {
+  text-align: center;
+  display: flex; /* Use flexbox for vertical and horizontal centering */
+  flex-direction: column; /* Stack child elements vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  height: 80vh; /* Make the container the full height of the viewport */
+  font-size: 4em;
+  font-family: "PT Sans", sans-serif;
 }
-

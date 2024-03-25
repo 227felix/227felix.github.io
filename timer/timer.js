@@ -1,4 +1,7 @@
 window.addEventListener('load', function () {
+    document.getElementById('darkmode-button').addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+      });
     let user_date;
     let span = document.getElementById('span');
     this.document.getElementById("button").addEventListener('click', function (event) {
