@@ -1,0 +1,15 @@
+{
+  "name": "rust-wasm-hello",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "rust_wasm_hello_bg.wasm",
+    "rust_wasm_hello.js",
+    "rust_wasm_hello.d.ts"
+  ],
+  "main": "rust_wasm_hello.js",
+  "types": "rust_wasm_hello.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
