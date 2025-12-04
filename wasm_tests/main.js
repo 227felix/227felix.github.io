@@ -27,7 +27,7 @@ async function run() {
       const link = document.createElement("a");
       link.href = resultDataUrl;
       link.download = "grayscale_image.png";
-      link.click();
+      // link.click();
       console.log("Image processed and downloaded.");
     } catch (error) {
       console.error("Error processing image:", error);
