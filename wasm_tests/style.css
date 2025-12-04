@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+html {
+    /* Prevent rubber-band scrolling on iOS */
+    overscroll-behavior: none;
+}
+
 :root {
     /* Professional Neutral Palette */
     --primary: #18181b;
@@ -45,8 +50,11 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100dvh;
-    /* Changed from 100vh to 100dvh */
     line-height: 1.5;
+    /* Prevent rubber-band scrolling on iOS */
+    overscroll-behavior-y: none;
+    /* Disable double-tap to zoom */
+    touch-action: manipulation;
 }
 
 h1 {
