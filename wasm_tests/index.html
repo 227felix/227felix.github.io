@@ -1,21 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Rust WASM Demo</title>
-    </head>
-    <body>
-        <h1>Rust Image Processor</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rust WASM Demo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Rust Image Processor</h1>
 
-        <input type="file" id="upload" accept="image/*" />
+    <div class="container">
+      <label for="upload" class="upload-btn">Select Image</label>
+      <input type="file" id="upload" accept="image/*" />
 
-        <p>Result from Rust:</p>
-        <img
-            id="result-image"
-            style="max-width: 500px; border: 1px solid #ccc"
-        />
+      <p class="result-label">Processed Result:</p>
+      <img id="result-image" />
+    </div>
 
-        <script type="module" src="main.js"></script>
-    </body>
+    <script type="module" src="main.js"></script>
+    <script>
+      // Small helper to show label when image loads
+      const img = document.getElementById("result-image");
+      const label = document.querySelector(".result-label");
+      img.onload = () => (label.style.display = "block");
+    </script>
+  </body>
 </html>
